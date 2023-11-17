@@ -1,0 +1,25 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Parameters: ${file:infra_resources/Parameters.yaml}
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  S3Bucket: ${file:infra_resources/Resources/S3Bucket.yaml}
+  ReadPolicy: ${file:infra_resources/Resources/ReadPolicy.yaml}
+  CloudFrontOriginAccessIdentity: ${file:infra_resources/Resources/CloudFrontOriginAccessIdentity.yaml}
+  CloudFrontDistribution: ${file:infra_resources/Resources/CloudFrontDistribution.yaml}
+  ScanTable: ${file:infra_resources/Resources/ScanTable.yaml}
+  QueryTable: ${file:infra_resources/Resources/QueryTable.yaml}
+  ResponseStreamingFunctionApi: ${file:infra_resources/Resources/ResponseStreamingFunctionApi.yaml}
+  DDBRegularLambda: ${file:infra_resources/Resources/DDBRegularLambda.yaml}
+  DDBStreamingLambda: ${file:infra_resources/Resources/DDBStreamingLambda.yaml}
+  DDBStreamingLambdaUrl: ${file:infra_resources/Resources/DDBStreamingLambdaUrl.yaml}
+  DDBStreamingLambdaPublicAccess: ${file:infra_resources/Resources/DDBStreamingLambdaPublicAccess.yaml}
+  StreamingLambdaLayer: ${file:infra_resources/Resources/StreamingLambdaLayer.yaml}
+  ChatGPTStreamingFunction: ${file:infra_resources/Resources/ChatGPTStreamingFunction.yaml}
+  ChatGPTStreamingFunctionUrl: ${file:infra_resources/Resources/ChatGPTStreamingFunctionUrl.yaml}
+  ChatGPTStreamingFunctionPublicAccess: ${file:infra_resources/Resources/ChatGPTStreamingFunctionPublicAccess.yaml}
+  ChatGPTRegularLambda: ${file:infra_resources/Resources/ChatGPTRegularLambda.yaml}
+  BedrockRegularLambda: ${file:infra_resources/Resources/BedrockRegularLambda.yaml}
+  BedrockStreamingFunction: ${file:infra_resources/Resources/BedrockStreamingFunction.yaml}
+  BedrockStreamingFunctionUrl: ${file:infra_resources/Resources/BedrockStreamingFunctionUrl.yaml}
+  BedrockStreamingFunctionPublicAccess: ${file:infra_resources/Resources/BedrockStreamingFunctionPublicAccess.yaml}
+Outputs: ${file:infra_resources/Outputs.yaml}

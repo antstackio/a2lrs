@@ -1,0 +1,7 @@
+Type: AWS::Lambda::Permission
+Properties:
+  Action: lambda:InvokeFunctionUrl
+  FunctionName:
+    Ref: BedrockStreamingFunction
+  FunctionUrlAuthType: NONE
+  Principal: "*"

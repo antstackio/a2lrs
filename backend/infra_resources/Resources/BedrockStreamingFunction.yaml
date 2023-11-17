@@ -1,0 +1,16 @@
+Type: AWS::Serverless::Function
+Metadata:
+  Dockerfile: Dockerfile
+  DockerContext: src/BedrockStreamingLambda
+Properties:
+  PackageType: Image
+  Timeout: 60
+  MemorySize: 2048
+  Policies:
+    - Version: '2012-10-17' 
+      Statement:
+        - Sid: FunctionURLAllowPublicAccess
+          Effect: Allow
+          Action:
+            - bedrock:InvokeModelWithResponseStream
+          Resource: '*'

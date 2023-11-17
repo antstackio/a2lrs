@@ -1,0 +1,27 @@
+Type: AWS::Serverless::Function
+Properties:
+  CodeUri: src/DDBStreamingLambda
+  Handler: index.handler
+  Runtime: nodejs16.x
+  Timeout: 60
+  MemorySize: 2048
+  AutoPublishAlias: live
+  Environment:
+    Variables:
+      SCAN_DB_NAME:
+        Fn::Sub: ${AWS::StackName}-${DynamoDBScanName}
+Connectors:
+  ScanTableConnector:
+    Properties:
+      Destination:
+        Id: ScanTable
+      Permissions:
+        - Write
+        - Read
+  QueryTableConnector:
+    Properties:
+      Destination:
+        Id: QueryTable
+      Permissions:
+        - Write
+        - Read

@@ -1,0 +1,37 @@
+ResponseLambdaUrlDDB:
+  Value:
+    Fn::GetAtt:
+      - DDBStreamingLambdaUrl
+      - FunctionUrl
+ResponseLambdaUrlChatGPT:
+  Value:
+    Fn::GetAtt:
+      - ChatGPTStreamingFunctionUrl
+      - FunctionUrl
+ResponseLambdaUrlBedrock:
+  Value:
+    Fn::GetAtt:
+      - BedrockStreamingFunctionUrl
+      - FunctionUrl
+ApiResourceId:
+  Value:
+    Fn::GetAtt:
+      - ResponseStreamingFunctionApi
+      - RestApiId
+CloudFrontDomainName:
+  Value:
+    Fn::GetAtt:
+      - CloudFrontDistribution
+      - DomainName
+HostedBucketName:
+  Value:
+    Ref:
+      S3Bucket
+DDBQueryTable:
+  Value:
+    Ref:
+      QueryTable
+DDBScanTable:
+  Value:
+    Ref:
+      ScanTable

@@ -1,0 +1,13 @@
+version = 0.1
+
+[default]
+
+[default.global.parameters]
+stack_name = "all-about-lrs"
+
+[default.deploy.parameters]
+capabilities = "CAPABILITY_IAM"
+confirm_changeset = false
+resolve_s3 = true
+s3_prefix = "alrs"
+region = "us-east-1"

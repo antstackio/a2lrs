@@ -1,10 +1,18 @@
 Type: AWS::Serverless::Function
 Properties:
   CodeUri: src/BedrockRegularLambda
-  Handler: index.handler
+  Handler: lambda_function.lambda_handler
   Runtime: python3.9
   Timeout: 60
   MemorySize: 1536
+  Policies:
+    - Version: '2012-10-17' 
+      Statement:
+        - Sid: BedrockAccess
+          Effect: Allow
+          Action:
+            - bedrock:InvokeModel
+          Resource: '*'
   Events:
     ApiEvent:
       Type: Api
@@ -13,3 +21,4 @@ Properties:
         Method: post
         RestApiId:
           Ref: ResponseStreamingFunctionApi
+   

@@ -68,7 +68,7 @@ const BedrockPage = () => {
   };
 
   const initContent = {
-    bedrock: "Bedrock with Cohere on Custom Lambda Python Runtime",
+    bedrock: "Bedrock with Llama on Custom Lambda Python Runtime",
     chatgpt: "ChatGPT on NodeJs Runtime",
   };
 
@@ -92,7 +92,7 @@ const BedrockPage = () => {
 
   return (
     <>
-      <GenericHeader Title="Streaming AI, Bedrock+Cohere vs ChatGPT" />
+      <GenericHeader Title="Streaming AI, Amazon Bedrock vs OpenAI" />
       <Row style={{ padding: "8px" }}>
         <Search
           placeholder="ask me anything"

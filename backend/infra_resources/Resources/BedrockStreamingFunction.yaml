@@ -13,4 +13,5 @@ Properties:
           Effect: Allow
           Action:
             - bedrock:InvokeModelWithResponseStream
+            - bedrock:InvokeModel
           Resource: '*'

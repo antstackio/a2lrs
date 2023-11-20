@@ -4,11 +4,12 @@ import json, boto3
 
 client = boto3.client("bedrock-runtime")
 
-
 def handler(event, context):
+    llmType = "meta.llama2-13b-chat-v1"
+
     response_stream = client.invoke_model_with_response_stream(
-        body=json.dumps({"prompt": event["body"], "max_tokens": 400, "stream": True}),
-        modelId="cohere.command-text-v14",
+        body=json.dumps({"prompt": event["body"],"max_gen_len": 512}),
+        modelId=llmType,
         accept="application/json",
         contentType="application/json",
     )
@@ -17,6 +18,13 @@ def handler(event, context):
         raise ValueError(f"Error invoking Bedrock API: {status_code}")
     for response in response_stream["body"]:
         json_response = json.loads(response["chunk"]["bytes"])
-        if "text" in json_response.keys():
-            if json_response["text"] != "<EOS_TOKEN>":
-                yield json_response["text"].encode()
+        if llmType == "meta.llama2-13b-chat-v1":
+            print(json_response["generation"])
+            yield json_response["generation"].encode()
+        elif llmType == "cohere.command-text-v14":
+            if "text" in json_response.keys():
+                if json_response["text"] != "<EOS_TOKEN>":
+                    yield json_response["text"].encode()
+ 
+
+    
